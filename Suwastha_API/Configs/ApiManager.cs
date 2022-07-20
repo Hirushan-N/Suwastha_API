@@ -24,10 +24,10 @@ namespace POS360_API.Configs
         {
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = @"DESKTOP-IMGD37M\SQLEXPRESS";  
-            builder.UserID = "Hirushan";         
-            builder.Password = "hirushan";  
-            builder.InitialCatalog = "Suwastha_DB";
+            builder.DataSource = @"SQL5080.site4now.net";  
+            builder.UserID = "db_a8a62e_suwastha_admin";         
+            builder.Password = "Suwastha2022#";  
+            builder.InitialCatalog = "db_a8a62e_suwastha";
             return builder;
         }
     }
