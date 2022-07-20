@@ -3,7 +3,7 @@
     public class ClinicBook
     {
 		public int? Id { get; set; }
-		public string? BookID { get; set; }
+		public string? ClinicBookID { get; set; }
 		public string? PatientID { get; set; }
 		public string? ClinicID { get; set; }
 		public DateTime? NextDate { get; set; }

@@ -3,7 +3,7 @@
     public class ResponseResult
     {
         public string? Status { get; set; }
-        public Object? RenponseBody { get; set; }
+        public Object? Body { get; set; }
         public string? Message { get; set; }
     }
 }
