@@ -38,7 +38,7 @@ namespace Suwastha_API.Configs
                         numaricPart = "0" + numaricPart;
                     }
                     //concat
-                    newCode = Prefix + numaricPart;
+                    newCode = Prefix + "-" + numaricPart;
                 }
 
             }
