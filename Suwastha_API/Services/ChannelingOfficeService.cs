@@ -1,4 +1,4 @@
-﻿using POS360_API.Configs;
+﻿using Suwastha_API.Configs;
 using Suwastha_API.Models;
 using System.Data;
 using System.Data.SqlClient;
