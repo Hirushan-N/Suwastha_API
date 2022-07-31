@@ -5,8 +5,8 @@ using Suwastha_API.Services;
 namespace Suwastha_API.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
-    public class ClinicBooksController : Controller
+    [Route("api/v1/Clinic/ClinicBook")]
+    public class ClinicBooksController_CNC : Controller
     {
 
         [HttpPost]
