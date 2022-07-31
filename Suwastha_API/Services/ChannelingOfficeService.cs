@@ -31,15 +31,15 @@ namespace Suwastha_API.Services
                     command.CommandTimeout = 0;
                     command.CommandText = "SP_ChannelingOffice_Save";
 
-                    command.Parameters.AddWithValue("@ClinicBookID", channelingOffice.ChannelingOfficeID);
-                    command.Parameters.AddWithValue("@PatientID", channelingOffice.Name);
-                    command.Parameters.AddWithValue("@ClinicID", channelingOffice.Title);
-                    command.Parameters.AddWithValue("@NextDate", channelingOffice.Description);
-                    command.Parameters.AddWithValue("@CreatedDoctor", channelingOffice.getEncryptedPassword());
-                    command.Parameters.AddWithValue("@CreatedSection", channelingOffice.ConsultantID);
-                    command.Parameters.AddWithValue("@ReferenceLetter", channelingOffice.ConsultantName);
-                    command.Parameters.AddWithValue("@ClosingNote", channelingOffice.DeputyConsultantID);
-                    command.Parameters.AddWithValue("@ClosingNote", channelingOffice.DeputyConsultantName);
+                    command.Parameters.AddWithValue("@ChannelingOfficeID", channelingOffice.ChannelingOfficeID);
+                    command.Parameters.AddWithValue("@Name", channelingOffice.Name);
+                    command.Parameters.AddWithValue("@Title", channelingOffice.Title);
+                    command.Parameters.AddWithValue("@Description", channelingOffice.Description);
+                    command.Parameters.AddWithValue("@Password", channelingOffice.getEncryptedPassword());
+                    command.Parameters.AddWithValue("@ConsultantID", channelingOffice.ConsultantID);
+                    command.Parameters.AddWithValue("@ConsultantName", channelingOffice.ConsultantName);
+                    command.Parameters.AddWithValue("@DeputyConsultantID", channelingOffice.DeputyConsultantID);
+                    command.Parameters.AddWithValue("@DeputyConsultantName", channelingOffice.DeputyConsultantName);
                     command.Parameters.AddWithValue("@IsActive", channelingOffice.IsActive);
                     command.Parameters.AddWithValue("@IsDeleted", channelingOffice.IsDeleted);
                     command.Parameters.AddWithValue("@CreatedDate", channelingOffice.CreatedDate);
@@ -76,13 +76,19 @@ namespace Suwastha_API.Services
         #endregion
 
         #region Delete 
-        public ResponseResult Delete(ChannelingOffice channelingOffice)
+        public ResponseResult? Delete(ChannelingOffice channelingOffice)
         {
             channelingOffice.IsActive = false;
             channelingOffice.IsDeleted = true;
             ResponseResult responseObj = this.Save(channelingOffice);
-            responseObj.Body = null;
-            responseObj.Message = "Deleted";
+            if (responseObj!=null)
+            {
+                if (responseObj.Status == APIResponse.Success.ToString())
+                {
+                    responseObj.Message = "Deleted";
+                }
+                responseObj.Body = null;
+            }
             return responseObj;
         }
         #endregion
@@ -106,7 +112,7 @@ namespace Suwastha_API.Services
                     command.CommandTimeout = 0;
                     command.CommandText = "SP_ChannelingOffice_Login";
                     command.Parameters.AddWithValue("@ChannelingOfficeID", loginRequest.User);
-                    command.Parameters.AddWithValue("@Password", loginRequest.Key);
+                    command.Parameters.AddWithValue("@Password", loginRequest.getEncryptedKey());
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
