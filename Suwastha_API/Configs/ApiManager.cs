@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace POS360_API.Configs
+namespace Suwastha_API.Configs
 {
     public sealed class ApiManager
     {
